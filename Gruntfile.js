@@ -115,6 +115,17 @@ grunt.initConfig({
           ],
           dest: '<%= config.build %>/tooltip/less/',
           filter: 'isFile'
+        },
+        {
+          expand: true,
+          flatten: true,
+          src: [
+            '<%= config.dev %>**/mixins.less',
+            '<%= config.dev %>**/variables.less',
+            '<%= config.dev %>**/switch.less'
+          ],
+          dest: '<%= config.build %>/switch/less/',
+          filter: 'isFile'
         }
       ]
     },
@@ -137,7 +148,8 @@ grunt.initConfig({
         '<%= config.build %>dropdown/dropdown.css': '<%= config.dev %>**/_dropdown-style.less',
         '<%= config.build %>modal/modal.css': '<%= config.dev %>**/_modal-style.less',
         '<%= config.build %>tab/tab.css': '<%= config.dev %>**/_tab-style.less',
-        '<%= config.build %>tooltip/tooltip.css': '<%= config.dev %>**/_tooltip-style.less'
+        '<%= config.build %>tooltip/tooltip.css': '<%= config.dev %>**/_tooltip-style.less',
+        '<%= config.build %>tooltip/tooltip.css': '<%= config.dev %>**/_switch-style.less'
       }
     },
     dev: {
@@ -276,6 +288,18 @@ grunt.initConfig({
         }
       ]
     },
+    switch: {
+      options: {
+        archive: '<%= config.build %>switch.zip'
+      },
+      files: [
+        {
+          expand: true,
+          cwd: '<%= config.build %>',
+          src: ['switch/**']
+        }
+      ]
+    },
     all: {
       options: {
         archive: '<%= config.build %>css-components.zip'
@@ -290,7 +314,8 @@ grunt.initConfig({
             'dropdown/**',
             'modal/**',
             'tab/**',
-            'tooltip/**'
+            'tooltip/**',
+            'switch/**'
           ]
         }
       ]
